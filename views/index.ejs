@@ -7,5 +7,30 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+
+    <ul>
+      <%for(let i=0 ; i < messages.length; i++){%>
+        <li><%= messages[i].text;%>
+        </li>
+      <%}%>
+    </ul>
+    <div class="removeButtonDiv">
+      <form class="removeNum" action="/remove" method="get">
+        <button type="submit" name="button">Remove</button>
+      </form>
+    </div>
+
+    <div class="insertButtonDiv">
+      <form class="insertNum" action="/insert" method="get">
+        <button type="submit" name="button">Insert</button>
+      </form>
+    </div>
+
+    <div class="addButtonDiv">
+      <form class="addNum" action="/add" method="get">
+        <button type="submit" name="button">Add</button>
+      </form>
+    </div>
+
   </body>
 </html>
