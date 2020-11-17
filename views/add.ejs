@@ -10,9 +10,10 @@
 
 <%let stringToNum = messages.map(Number);%>
 <%let sum = 0;%>
-<%for(let i=0 ; i < messages.length; i++){%>
+<%for(let i=0 ; i < stringToNum.length; i++){%>
     <%sum = sum + stringToNum[i];%>
   <%}%>
   <%=sum;%>
+
   </body>
 </html>

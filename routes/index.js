@@ -20,6 +20,10 @@ router.get('/add', function(req, res, next) {
   res.render('add', { messages: numarray, title: 'Calculator - Number Addition', header: 'Simple Express Calculator' });
 });
 
+router.get('/mult', function(req, res, next) {
+  res.render('mult', { messages: numarray, title: 'Calculator - Number Multiplication', header: 'Simple Express Calculator' });
+});
+
 router.get('/insert', function(req, res, next) {
   res.render('insert', { title: 'Calculator - Insert Number', header: 'Simple Express Calculator' });
 });
