@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p><%= header %></p>
+    <form class="newPageRoute" action="/newPost" method="post">
+      <input type="text" name="name" value="" placeholder="Enter your name">
+      <input type="text" name="status" value="" placeholder="What is your status?">
+      <button type="submit" name="button">Create Post</button>
+    </form>
+  </body>

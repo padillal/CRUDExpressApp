@@ -6,37 +6,22 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p><%= header %></p>
 
-    <ul>
-      <%for(let i=0 ; i < messages.length; i++){%>
-        <li><%= messages[i];%>
-        </li>
-      <%}%>
-    </ul>
-    <div class="removeButtonDiv">
-      <form class="removeNum" action="/remove" method="get">
-        <button type="submit" name="button">Remove</button>
-      </form>
-    </div>
+      <ul>
+       <%for(let i=0 ; i < content.length; i++){%>
+         <li><%= content[i].name;%>
+           <%= "- " + content[i].status;%>
+         </li>
+         <%}%>
+       </ul>
+       <div class="buttonDiv">
+         <form class="removePost" action="/delete" method="get">
+           <button type="submit" name="button">Remove Post</button>
+         </form>
 
-    <div class="insertButtonDiv">
-      <form class="insertNum" action="/insert" method="get">
-        <button type="submit" name="button">Insert</button>
-      </form>
-    </div>
+       </div>
 
-    <div class="addButtonDiv">
-      <form class="addNum" action="/add" method="get">
-        <button type="submit" name="button">Add</button>
-      </form>
-    </div>
-
-    <div class="multButtonDiv">
-      <form class="multNum" action="/mult" method="get">
-        <button type="submit" name="button">Multiply</button>
-      </form>
-    </div>
 
   </body>
 </html>
