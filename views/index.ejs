@@ -12,6 +12,7 @@
        <%for(let i=0 ; i < content.length; i++){%>
          <li><%= content[i].name;%>
            <%= "- " + content[i].status;%>
+           <%= "( "+ content[i].id+ " )";%>
          </li>
          <%}%>
        </ul>
