@@ -15,9 +15,9 @@ const profile = [
    }
 ];
 
-/* GET home page. */
+/* GET home page. VIEW */
 router.get('/', function(req, res, next) {
-  res.render('index', { content: profile , title: 'MyBook', header: 'Home Page' });
+   res.render('index', { content: profile , title: 'MyBook', header: 'Home Page' });
 });
 
 router.get('/post/:id', function(req, res, next) {
@@ -32,11 +32,10 @@ router.get('/post/:id', function(req, res, next) {
 });
 
 
-/*GET new page*/
+/*GET new page VIEW*/
 router.get('/newPost', function(req, res, next) {
   res.render('form', { title: 'MyBook', header: 'Create New Post' });
 });
-
 
 router.post('/newPost', function(req, res, next) {
   let item = req.body;
@@ -51,7 +50,7 @@ router.post('/newPost', function(req, res, next) {
   }
 
   profile.push(newPost);
-  res.redirect('/');
+  res.send("Return to localhost:"+3000+" to see new post!");
 
 });
 
@@ -74,9 +73,14 @@ router.put('/update/:id', function(req, res, next) {
  res.send(updatePost);
 });
 
-router.get('/delete',function(req,res,next){
-  profile.pop();
-  res.render('index', { content: profile , title: 'MyBook', header: 'A post has been removed' })
+router.get('/delete/:id',function(req,res,next){
+  let id = req.params.id;
+  for(let i = 0; i < profile.length; i++){
+    if(profile[i].id == id){
+      profile.splice(i,1);
+    }
+  }
+  res.send("Post Removed! Return to localhost:"+3000);
 });
 
 module.exports = router;
