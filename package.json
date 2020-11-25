@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node server.js"
+    "start-server": "nodemon server.js",
+    "start-mongo": "sudo systemctl start mongod",
+    "start": "concurrently \" npm run start-mongo \" \" npm run start-server \" "
   },
   "dependencies": {
     "cookie-parser": "^1.4.5",

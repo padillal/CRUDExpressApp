@@ -4,23 +4,28 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
+var apiRouter = require('./routes/api');
 var viewRouter = require('./routes/view');
 
 var app = express();
 
+// ******************************************** DATABASE ********************************************
 //Import the mongoose module
 var mongoose = require('mongoose');
 
 //Set up default mongoose connection
 var mongoDB = 'mongodb://127.0.0.1/my_database';
-mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true})
+  .then(() => {
+        console.log('Connection to MongoDB Successful');
+     });
 
 //Get the default connection
 var db = mongoose.connection;
 
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+// ******************************************** END DATABASE ********************************************
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,8 +37,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/view', viewRouter);
+app.use('/api', apiRouter);
+app.use('/', viewRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
