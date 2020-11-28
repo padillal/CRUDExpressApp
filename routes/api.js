@@ -19,6 +19,7 @@ const Profile = require("./../models/Profile");
 // ];
 
 
+//CREATE NEW POST
 router.post('/newPost', function(req, res, next) {
   // Create new TV Show Object using the incoming data
   let new_profile = new Profile(req.body);
@@ -33,6 +34,39 @@ router.post('/newPost', function(req, res, next) {
     res.json(new_profile);
   });
 });
+
+
+// GET SINGLE PROFILE BY ID?
+router.get('/post/:id', function(req,res,next){
+  let id = req.params.id;
+  Profile.find({id: id}, function(err, profiles){
+    if(err){
+      res.send(err);
+    }
+    res.json(profiles);
+  });
+});
+
+router.get('post/:id', function(req,res,next){
+  let one = req.params.one;
+  Profile.findOne({post: one}, function(err, profile){
+    if(err){
+      res.send(err);
+    }
+    res.json(profile);
+  });
+});
+
+//DELETE Post
+router.delete('/', function(req,res,next){
+  Profile.remove({},err => {
+    if(err){
+      res.send(err);
+    }
+    res.json({});
+  });
+});
+
 
 // router.get('/post/:id', function(req, res, next) {
 //   let id = req.params.id;
