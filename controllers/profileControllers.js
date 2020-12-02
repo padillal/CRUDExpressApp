@@ -35,6 +35,15 @@ exports.get_profile = function(req, res) {
   });
 };
 
+ exports.update_profile = function(req, res){
+   let profileId = req.params.profileId;
+   Profile.findOneAndUpdate({id:profileId}, req.body, function(err,profile){
+     if(err)
+       res.send(err);
+     res.json(profile);
+   });
+ };
+
 // Delete all profiles
 exports.delete_profiles = function(req, res) {
   Show.deleteMany({}, function(err, data) {

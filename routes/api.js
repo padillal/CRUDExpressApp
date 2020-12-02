@@ -14,6 +14,9 @@ router.get('/', profileControl.get_profiles);
 //Read one profiles
 router.get('/:profileId', profileControl.get_profile);
 
+//Update one profile
+router.put('/:profileId', profileControl.update_profile);
+
 //Delete all profiles
 router.delete('/', profileControl.delete_profiles);
 
